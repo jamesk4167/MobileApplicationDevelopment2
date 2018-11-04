@@ -19,17 +19,10 @@ public class fireBullet : MonoBehaviour {
 	void Update () {
 		bullet.velocity = new Vector2 (0, 1) * moveSpeed;
 	}
-/* 
-	void OnCollisionEnter2D(Collision2D col){
 
-		if(col.gameObject.tag == "enemy"){
-			
-            col.gameObject.SetActive(false);
-	}
-		
+	void OnCollisionEnter2D(Collision2D col){	
 	if(col.gameObject.name == "TopWall"){
 		Object.Destroy(this.gameObject);
 	}
 }
-*/
 }
