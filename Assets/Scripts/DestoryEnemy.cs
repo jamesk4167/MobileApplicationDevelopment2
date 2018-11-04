@@ -10,6 +10,8 @@ public class DestoryEnemy : MonoBehaviour {
 			Object.Destroy(this.gameObject);
 			Object.Destroy(col.gameObject);
             col.gameObject.SetActive(false);
+
+			ScoreScript.scoreVal += 1;
 	}
 }
 }
