@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1073444806602",
+    "firebase_url": "https://spacequestdb.firebaseio.com",
+    "project_id": "spacequestdb",
+    "storage_bucket": "spacequestdb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1073444806602:android:f5901f9194d0a2e4",
+        "android_client_info": {
+          "package_name": "com.gmit.SpaceQuester"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1073444806602-hj7nsetbtrolei1mslhng84it8g2b1oe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFpYmdWdy0Nwn2JXbaf4KuRipoIYT9nOQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

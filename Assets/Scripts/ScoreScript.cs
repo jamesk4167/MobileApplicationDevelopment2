@@ -5,16 +5,22 @@ using UnityEngine.UI;
 
 public class ScoreScript : MonoBehaviour {
 
-
+    
+   
+    
+    private GameObject GameControllerGame;
     public static int scoreVal = 0;
-	Text score;
+	public Text score;
 	// Use this for initialization
 	void Start () {
-		score = GetComponent<Text> ();
+		score = GameControllerGame.GetComponent<Text> ();
 	}
 	
+
 	// Update is called once per frame
 	void Update () {
 		score.text = "score: " + scoreVal;
 	}
+
+
 }

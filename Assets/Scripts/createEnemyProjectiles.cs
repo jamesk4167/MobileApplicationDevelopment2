@@ -14,17 +14,15 @@ public class createEnemyProjectiles : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		projectile.velocity = new Vector2 (0, -1) * moveSpeed;
+		projectile.velocity = new Vector3 (0, -1) * moveSpeed;
 	}
-/* 
-	void OnCollisionEnter2D(Collision2D col){
-		if(col.gameObject.tag == "Player"){
-			//Debug.Log("Hit the enemy");
-            col.gameObject.SetActive(false);
-	}
-	   else if(col.gameObject.name == "BottomWall"){
+
+    //Destroy the gameObject If it hits the bottomWall
+    void OnCollisionEnter2D(Collision2D col){
+		if(col.gameObject.name == "BottomWall"){
 		Object.Destroy (this.gameObject);
+		}
+
 	}
-	}*/
 }
 
