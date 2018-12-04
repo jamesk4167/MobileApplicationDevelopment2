@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 114635598980549820}
   m_Layer: 10
   m_Name: PlayerShip
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,6 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 10
   player: {fileID: 0}
+  xconstraint: {x: -5, y: 5}
 --- !u!212 &212780676143339950
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -182,7 +183,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -5288997
   m_SortingLayer: 3
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 49b0e5487ca4b6c45a2425b57438db8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

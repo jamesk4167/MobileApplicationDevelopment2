@@ -12,7 +12,14 @@ public class DestoryPlayer : MonoBehaviour {
 			//destroy the bullet
 			Object.Destroy(col.gameObject);
             //col.gameObject.SetActive(false);
-			playerHealthScript.health -= 1;
+			playerHealth.currentHealth -= 20;
+
+			
+	}
+	if(col.gameObject.tag == "EnemyBullet"){
+			
+            Object.Destroy(col.gameObject);
+			playerHealthScript.health += 1;
 
 			
 	}
@@ -23,7 +30,7 @@ public class DestoryPlayer : MonoBehaviour {
 			//destroy the Commit
 			Object.Destroy(col.gameObject);
             //col.gameObject.SetActive(false);
-			playerHealthScript.health -= 1;
+			playerHealth.currentHealth -= 20;
 
 	}
 }

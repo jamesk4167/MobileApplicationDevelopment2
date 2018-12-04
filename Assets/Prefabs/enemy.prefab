@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4803795564569810}
   - component: {fileID: 114359062581641808}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: ShootPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,15 +38,15 @@ GameObject:
   - component: {fileID: 212015519246836290}
   - component: {fileID: 70757744940284806}
   - component: {fileID: 50875027701220222}
-  - component: {fileID: 114184808214590164}
   - component: {fileID: 114287249962330374}
   - component: {fileID: 82573688081970048}
-  m_Layer: 10
+  - component: {fileID: 114102024547560906}
+  m_Layer: 12
   m_Name: enemy
-  m_TagString: enemy
+  m_TagString: asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &4661700328180552
 Transform:
@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1848041077112556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.20398529, y: 2.5060995, z: 0}
+  m_LocalPosition: {x: -0.6083179, y: -2.298092, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4803795564569810}
@@ -205,7 +205,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &114184808214590164
+--- !u!114 &114102024547560906
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,12 +213,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1848041077112556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 811a0937024a22f499c839b5b6e929fe, type: 3}
+  m_Script: {fileID: 11500000, guid: 008d6146dac81404a98b9314c3408a74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 0}
-  moveSpeed: 10
-  changeDirection: 0
+  projectile: {fileID: 0}
+  moveSpeed: 3
 --- !u!114 &114287249962330374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -230,6 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f273c1a018ac5479c09cd9179a1927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Explosion: {fileID: 1032018099829154, guid: e7acecb9b75948547bad375a759d039e, type: 2}
 --- !u!114 &114359062581641808
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileSpawn: {fileID: 0}
   projectile: {fileID: 1075728119481954, guid: fcec094aaa6cb3f4181d22385e99731f, type: 2}
-  nextFire: 1
+  nextFire: 0.5
   currentTime: 0
 --- !u!212 &212015519246836290
 SpriteRenderer:

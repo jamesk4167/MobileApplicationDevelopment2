@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class CharacterSpawner : MonoBehaviour {
 
-
-   public static CharacterSpawner Instance;
-  
-
-    public GameObject[] characters;
-	public Transform playerSpawn;
-	// Use this for initialization
-
+      public GameObject[] playerShips;
+      public static Vector2 spawnPoint = new Vector2(0,-4);
+      
 
    
 	void Start () {
-		Instantiate (characters[CharacterSelector.playerNum], playerSpawn.position, playerSpawn.rotation );
+		if(PlayerPrefs.GetInt ("SelectedCharacter") == 0){
+			Instantiate (playerShips[(0)], spawnPoint, Quaternion.identity);
+		}
+		if(PlayerPrefs.GetInt("SelectedCharacter") == 1){
+			Instantiate (playerShips[(1)], spawnPoint, Quaternion.identity);
+		}
+		if(PlayerPrefs.GetInt("SelectedCharacter") == 2){
+			Instantiate (playerShips[(2)], spawnPoint, Quaternion.identity);
+		}
 	}
-	}
+}
 
 	
 

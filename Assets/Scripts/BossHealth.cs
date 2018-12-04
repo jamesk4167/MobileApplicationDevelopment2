@@ -2,52 +2,52 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class BossHealth : MonoBehaviour {
 
-	public float currentHealth {get; set; }
-	public float MaxHealth {get; set; }
-	public Slider HealthBar;
+	public Slider healthSlider;
+	public GameObject Explosion;
+	public Rigidbody2D Boss;
 
-
-	// Use this for initialization
-	void Start () {
-		MaxHealth = 20.0f;
-
-		currentHealth = MaxHealth;
-		HealthBar.value = CalculateHealth();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
-
+	static public float currentHealth = 100;
 
 	void OnCollisionEnter2D(Collision2D col){
 		if(col.gameObject.tag == "Bullet"){
+			currentHealth -= 10;
 			Object.Destroy(col.gameObject);
-			DealDamage(3);
-		}
+			//Object.Destroy(this.gameObject);
 	}
-    //Deal damage to the boss
-	void DealDamage(int DamageDealth){
-		currentHealth -= DamageDealth;
-		HealthBar.value = CalculateHealth();
+	}
+
+	void start(){
+		healthSlider.value = currentHealth;
+		Boss =  this.GetComponent<Rigidbody2D>();
+		
+	}
+
+	void Update(){
+		healthControl();
+	}
+
+
+	public void healthControl(){
+		 healthSlider.value = currentHealth;
 
 		if(currentHealth <= 0){
-			//Destroy(this.gameObject);
-			Die();
-			ScoreScript.scoreVal += 10;
+			Object.Destroy(this.gameObject);
+			playExplosion();
+			
+			SceneManager.LoadSceneAsync("level 1");
 		}
 	}
-    //divide currentHealth by MAxhealth for the healthslider
-	float CalculateHealth(){
-		return currentHealth / MaxHealth;
-	}
 
-	void Die(){
-          Destroy(this.gameObject);
-		  currentHealth = 0;
-	}
+
+
+	void playExplosion(){
+	GameObject explosion = (GameObject) Instantiate (Explosion);
+
+	explosion.transform.position = transform.position;
+}
 }

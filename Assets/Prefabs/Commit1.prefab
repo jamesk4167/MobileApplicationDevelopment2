@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f273c1a018ac5479c09cd9179a1927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Explosion: {fileID: 1032018099829154, guid: e7acecb9b75948547bad375a759d039e, type: 2}
 --- !u!212 &212914026600746392
 SpriteRenderer:
   m_ObjectHideFlags: 1

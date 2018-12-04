@@ -12,10 +12,10 @@ public class playerHealthScript : MonoBehaviour {
     
    private int Score;
    
-   public GameObject Heart1, Heart2, Heart3;
+   public GameObject Heart1, Heart2, Heart3, Explosion;
    static public int health = 3;
   
-
+  
 
   
 	
@@ -61,6 +61,7 @@ public class playerHealthScript : MonoBehaviour {
 		      Heart1.gameObject.SetActive(false);
 		      Heart2.gameObject.SetActive(false);
 		      Heart3.gameObject.SetActive(false);
+			  playExplosion();
 		      EndGame();
 			  this.enabled = false;
 			  break;
@@ -72,5 +73,11 @@ public class playerHealthScript : MonoBehaviour {
 			SceneManager.LoadSceneAsync("EndMenu");
 			Score = ScoreScript.scoreVal;
 			GetComponent<LeaderBoard>().CheckForHighScore(Score);
+			
 	}
+       public void playExplosion(){
+		   GameObject explosion = (GameObject) Instantiate (Explosion);
+
+	       explosion.transform.position = transform.position;
+	   }
 }

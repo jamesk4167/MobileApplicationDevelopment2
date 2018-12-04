@@ -13,16 +13,24 @@ private float DelayBeforeLoading = 5.0f;
 
  [SerializeField]
  private int loadLevel;
-
-
+ 
+ public Text DisplayTimer;
+ private GameObject GameController;
  private float timer = 0;
+ private float countDown = 60;
 
+
+void Start(){
+  DisplayTimer = GameController.GetComponent<Text> ();
+}
   void Update(){
     updateAfterTime();
   }
 
 void updateAfterTime(){
   timer += Time.deltaTime;
+  countDown -= Time.deltaTime;
+  DisplayTimer.text = "time left:" + Mathf.Round(countDown);
     if(timer >= DelayBeforeLoading){
        FadeToLevel(loadLevel);
      }

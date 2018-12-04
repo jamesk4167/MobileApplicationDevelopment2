@@ -74,18 +74,6 @@ public class dbRegister : MonoBehaviour {
 			   }
 		}
 
-
-
-       public void SearchValue(string Username, string password){
-                 using(dbConn = (IDbConnection)new SqliteConnection(Conn)){
-                     dbConn.Open();
-					 DBcmd = dbConn.CreateCommand();
-					 sqlQuery = string.Format("SELECT * FROM Usersinfo WHERE (username, password) LIKE '%username%','%password%')",Username, password);
-					 DBcmd.CommandText = sqlQuery;
-					 DBcmd.ExecuteScalar();
-					 dbConn.Close();
-				 }
-	   }
 	private void Readers(){
 		using(dbConn = (IDbConnection)new SqliteConnection(Conn)){
 			dbConn.Open();//open connection to the database
