@@ -7,6 +7,9 @@ TagManager:
   - Bullet
   - enemy
   - EnemyBullet
+  - TopWall
+  - asteroid
+  - powerUp
   layers:
   - Default
   - TransparentFX
@@ -20,9 +23,9 @@ TagManager:
   - MiddleGround
   - ForeGround
   - EnemySpawner
-  - 
-  - 
-  - 
+  - Asteroids
+  - TopWall
+  - powerUp
   - 
   - 
   - 
