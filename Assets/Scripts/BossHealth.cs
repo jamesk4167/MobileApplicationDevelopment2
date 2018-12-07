@@ -4,50 +4,41 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-
 public class BossHealth : MonoBehaviour {
 
-	public Slider healthSlider;
 	public GameObject Explosion;
-	public Rigidbody2D Boss;
+	public GameObject Boss;
 
+	public Slider healthSlider;
+
+    private float timer = 0;
 	static public float currentHealth = 100;
-
-	void OnCollisionEnter2D(Collision2D col){
-		if(col.gameObject.tag == "Bullet"){
-			currentHealth -= 10;
-			Object.Destroy(col.gameObject);
-			//Object.Destroy(this.gameObject);
-	}
-	}
+	private int i = 0;
 
 	void start(){
 		healthSlider.value = currentHealth;
-		Boss =  this.GetComponent<Rigidbody2D>();
-		
 	}
 
 	void Update(){
 		healthControl();
+		if(i > 0){
+			timer += Time.deltaTime;
+		}
 	}
 
 
 	public void healthControl(){
 		 healthSlider.value = currentHealth;
-
+         
 		if(currentHealth <= 0){
-			Object.Destroy(this.gameObject);
-			playExplosion();
+			i = 1;
+			//playerHealthScript.health += 1;
 			
-			SceneManager.LoadSceneAsync("level 1");
+			if(timer >= 3){
+			   SceneManager.LoadSceneAsync("Level 1");
+			}
 		}
 	}
 
 
-
-	void playExplosion(){
-	GameObject explosion = (GameObject) Instantiate (Explosion);
-
-	explosion.transform.position = transform.position;
-}
 }

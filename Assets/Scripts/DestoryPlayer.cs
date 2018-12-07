@@ -16,7 +16,7 @@ public class DestoryPlayer : MonoBehaviour {
 
 			
 	}
-	if(col.gameObject.tag == "EnemyBullet"){
+	if(col.gameObject.tag == "powerUp"){
 			
             Object.Destroy(col.gameObject);
 			playerHealthScript.health += 1;

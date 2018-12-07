@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class PauseMenu : MonoBehaviour {
 
    public bool paused;
-   public GameObject pauseMenu;
+   public GameObject pauseMenu, BackGroundButtons;
+   
 
 
    void Start(){
@@ -25,10 +27,13 @@ public class PauseMenu : MonoBehaviour {
 	   if(paused){
 		   Time.timeScale = 0;
 		   pauseMenu.SetActive(true);
+		   BackGroundButtons.SetActive(false);
 
 	   }else if(!paused){
 		   Time.timeScale = 1;
 		   pauseMenu.SetActive(false);
+		   //backGroundButtons.SetActive(true);
+		   BackGroundButtons.SetActive(true);
 	   }
 }
    

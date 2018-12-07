@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 58209330594221826}
   - component: {fileID: 114203310820991590}
   - component: {fileID: 82549794181735768}
-  m_Layer: 10
+  m_Layer: 15
   m_Name: Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.0001
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -90,13 +90,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9423c8129f0099e4ab387ae6b8227175, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.12
+  m_Volume: 0.054
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 73
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

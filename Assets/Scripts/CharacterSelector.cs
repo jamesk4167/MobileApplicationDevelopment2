@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class CharacterSelector : MonoBehaviour {
 	
+    
+
 	public void characterSelectorFunction(int selectedCharacter){
         PlayerPrefs.SetInt("selectedCharacter", selectedCharacter);
 		print(selectedCharacter);

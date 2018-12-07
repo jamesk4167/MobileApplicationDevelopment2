@@ -69,8 +69,9 @@ public class playerHealthScript : MonoBehaviour {
 
 		}
 			void EndGame(){
-			//audio.Stop();
-			SceneManager.LoadSceneAsync("EndMenu");
+			//coma back to here GetComponent<AudioManager>().CheckForHighScore(Score);
+			SceneManager.LoadSceneAsync("LeaderBoardMenu");
+			//check the score from the ScoreScript
 			Score = ScoreScript.scoreVal;
 			GetComponent<LeaderBoard>().CheckForHighScore(Score);
 			

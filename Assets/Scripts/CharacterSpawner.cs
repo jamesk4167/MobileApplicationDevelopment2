@@ -10,13 +10,13 @@ public class CharacterSpawner : MonoBehaviour {
 
    
 	void Start () {
-		if(PlayerPrefs.GetInt ("SelectedCharacter") == 0){
+		if(PlayerPrefs.GetInt ("selectedCharacter") == 0){
 			Instantiate (playerShips[(0)], spawnPoint, Quaternion.identity);
 		}
-		if(PlayerPrefs.GetInt("SelectedCharacter") == 1){
+		if(PlayerPrefs.GetInt("selectedCharacter") == 1){
 			Instantiate (playerShips[(1)], spawnPoint, Quaternion.identity);
 		}
-		if(PlayerPrefs.GetInt("SelectedCharacter") == 2){
+		if(PlayerPrefs.GetInt("selectedCharacter") == 2){
 			Instantiate (playerShips[(2)], spawnPoint, Quaternion.identity);
 		}
 	}

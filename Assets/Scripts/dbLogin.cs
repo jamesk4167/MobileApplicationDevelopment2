@@ -4,8 +4,11 @@ using UnityEngine;
 using Mono.Data.Sqlite;
 using System.Data;
 using System;
+using System.Configuration;
+using System.EnterpriseServices;
+using System.Security;
+using System.IO;
 using UnityEngine.UI;
-
 public class dbLogin : MonoBehaviour {
 
 
@@ -20,13 +23,36 @@ public class dbLogin : MonoBehaviour {
 	IDbCommand DBcmd;
 	// Use this for initialization
 	void Start () {
-		Conn = "URI=file:" + Application.dataPath + V;
+
+		ConnectionDB();
+		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	
+
+	public void ConnectionDB(){
+     
+ 
+         if (Application.platform != RuntimePlatform.Android) {
+         
+            Conn = "URI=file:" + Application.dataPath + V;
+         } else {
+ 
+             Conn = Application.persistentDataPath + V;
+             if(!File.Exists(Conn)){
+                 WWW load = new WWW ("jar:file://" + Application.dataPath + V); 
+                 while (!load.isDone){
+ 
+                 File.WriteAllBytes (Conn, load.bytes);
+             }    
+         }
+		 }
 	}
+
+
+ 
+ 
 
 
 	public void Login(){
@@ -42,7 +68,7 @@ public class dbLogin : MonoBehaviour {
 					 int count = 0;
                      dbConn.Open();
 					 DBcmd = dbConn.CreateCommand();
-					 sqlQuery = string.Format("SELECT * FROM Usersinfo WHERE username= '" + Username + "'");
+					 sqlQuery = string.Format("SELECT * FROM UserInformation WHERE username= '" + Username + "'");
 					 DBcmd.CommandText = sqlQuery;
 					 DBcmd.Connection = dbConn;
 					 IDataReader reader = DBcmd.ExecuteReader();
@@ -59,6 +85,5 @@ public class dbLogin : MonoBehaviour {
 					 }
 					 dbConn.Close();
 				 }
-		
 	   }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 public class SoundController : MonoBehaviour {
@@ -28,5 +29,15 @@ public class SoundController : MonoBehaviour {
 		}
 
 		DontDestroyOnLoad(this.gameObject);
+	}
+
+
+	public void MuteCtrl(){
+		if(PlayerPrefs.GetInt("Muted", 0) == 0){
+			PlayerPrefs.SetInt("Muted", 1);
+		}else{
+			PlayerPrefs.SetInt("Muted",0);
+		}
+
 	}
 }

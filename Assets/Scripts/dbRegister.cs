@@ -4,9 +4,13 @@ using UnityEngine;
 using Mono.Data.Sqlite;
 using System.Data;
 using System;
+using System.Configuration;
+using System.EnterpriseServices;
+using System.Security;
+using System.IO;
 using UnityEngine.UI;
 
-public class db : MonoBehaviour {
+public class dbRegister : MonoBehaviour {
 
 	public InputField username, password, country;
 	public Text Check;
@@ -22,31 +26,29 @@ public class db : MonoBehaviour {
     // Use this for initialization
     void Start () {
 		//open connection to database
-		Conn = "URI=file:" + Application.dataPath + V;
-		//dbConn = (IDbConnection)new SqliteConnection(Conn);
-		/*dbConn.Open();//open connection to the database
-		IDbCommand DBcmd = dbConn.CreateCommand();
-        String sqlQuery = "SELECT * " + "FROM UsersInfo";
-		DBcmd.CommandText = sqlQuery;
-		IDataReader reader = DBcmd.ExecuteReader();
-		while(reader.Read()){
-             int ID = reader.GetInt32(0);
-			 string username = reader.GetString(1);
-             string password = reader.GetString(2);
-             string Country = reader.GetString(3);
-
-                Debug.Log("value= " + ID + "  username =" + username + "  password =" + password + "   Country =" + Country);
-            }
-
-			reader.Close();
-			reader = null;
-			DBcmd.Dispose();
-			DBcmd = null;
-			dbConn.Close();
-			dbConn = null;*/
-			//InsertValue("Batman", "Alfred", "USA");
-			Readers();
+		ConnectionDB();
+		
+		Readers();
 		}
+
+		public void ConnectionDB(){
+     
+ 
+         if (Application.platform != RuntimePlatform.Android) {
+         
+            Conn = "URI=file:" + Application.dataPath + V;
+         } else {
+ 
+             Conn = Application.persistentDataPath + V;
+             if(!File.Exists(Conn)){
+                 WWW load = new WWW ("jar:file://" + Application.dataPath + V); 
+                 while (!load.isDone){
+ 
+                 File.WriteAllBytes (Conn, load.bytes);
+				 }
+             }    
+         }
+  }
 
 
         
@@ -63,7 +65,8 @@ public class db : MonoBehaviour {
                using(dbConn = (IDbConnection)new SqliteConnection(Conn)){
                      dbConn.Open();
 					 DBcmd = dbConn.CreateCommand();
-					 sqlQuery = string.Format("INSERT INTO Usersinfo (username, password, country) VALUES (\"{0}\",\"{1}\",\"{2}\")",username,password,country);
+					 
+					 sqlQuery = string.Format("INSERT INTO Userinformation (username, password, country) VALUES (\"{0}\",\"{1}\",\"{2}\")",username,password,country);
 					 DBcmd.CommandText = sqlQuery;
 					 DBcmd.ExecuteScalar();
 					 dbConn.Close();
@@ -76,7 +79,7 @@ public class db : MonoBehaviour {
                  using(dbConn = (IDbConnection)new SqliteConnection(Conn)){
                      dbConn.Open();
 					 DBcmd = dbConn.CreateCommand();
-					 sqlQuery = string.Format("SELECT * FROM Usersinfo WHERE (username, password) LIKE '%username%','%password%')",Username, password);
+					 sqlQuery = string.Format("SELECT * FROM Usersinfo WHERE (username, password) LIKE '%username%','%password%')",username, password);
 					 DBcmd.CommandText = sqlQuery;
 					 DBcmd.ExecuteScalar();
 					 dbConn.Close();
@@ -94,8 +97,6 @@ public class db : MonoBehaviour {
 			    string username = reader.GetString(1);
                 string password = reader.GetString(2);
                 string Country = reader.GetString(3);
-
-                Debug.Log("value= " + ID + "  username =" + username + "  password =" + password + "   Country =" + Country);
             }
 
 			reader.Close();

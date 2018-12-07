@@ -1,49 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class PlayerMovement : MonoBehaviour {
-
-   public float MoveSpeed = 10.0f;
-   public Rigidbody2D player;
-
-   public Vector2 xconstraint;
-   
-
-   private Vector2 touchOrigin = Vector2.one;
-
-   
-	// Use this for initialization
-	void Start () {
-		
-		player =  this.GetComponent<Rigidbody2D>();
-	}
-	
-	
-	void FixedUpdate () {
-		
-	#if UNITY_EDITOR
-		MovePlayer();
-	#else
-        if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary){
-			Vector2 touchPosition = Input.GetTouch(0).position;
-			transform.position = new Vector2(Mathf.clamp(touchPosition.x, xconstraint.x, xconstraint.y), 0, 0);
-			double halfScreen = Screen.width / 2.0;
-
-			if(touchPosition.x < halfScreen){
-				player.transform.Translate(Vector3.left * 5 * Time.deltaTime);
+using UnityEngine.UI;
+using UnityEngine;
+public class PlayerMovement : MonoBehaviour
+{
+    private float screenCenterX;
+	public float moveSpeed = 5;
+ 
+    private Rigidbody2D characterBody; 
+    private void Start()
+    {
+        // save the horizontal center of the screen
+        screenCenterX = Screen.width * 0.5f;
+        //reference the rigidbody this script is attached too
+		characterBody = this.GetComponent<Rigidbody2D> ();
+    }
+ 
+    private void Update()
+    {
+        // if there are any touches currently
+        if(Input.touchCount > 0 )
+        {
+            // get the first one
+            Touch firstTouch = Input.GetTouch(0);
+ 
+            // if it began this frame
+            if(firstTouch.phase == TouchPhase.Began)
+            {
+                if(firstTouch.position.x > screenCenterX)
+                {
+                    // if the touch position is to the right of center
+                    // move right
+					MoveCharacter (10.0f);
 				
-			}else if(touchPosition.x > halfScreen){
-				player.transform.Translate(Vector3.right * 5 Time.deltaTime);
-			}
-		}
-	#endif	
+                }
+                else if(firstTouch.position.x < screenCenterX)
+                {
+                    // if the touch position is to the left of center
+                    // move left
+					MoveCharacter (-10.0f);
+                }
+            }
+        }
+    }
 
+void FixedUpdate(){
+     #if UNITY_EDITOR
+        MoveCharacter(Input.GetAxis("Horizontal") * moveSpeed);
+     #endif
+}
+    //move the character
+	private void MoveCharacter(float horizontalInput){
+		characterBody.velocity = new Vector2(horizontalInput * moveSpeed * Time.deltaTime, 0);
+		
 	}
-	
-
-	public void MovePlayer(){
-		player.velocity = new Vector3(Input.GetAxis("Horizontal"), 0) * MoveSpeed;
-	}
-
 }
