@@ -9,7 +9,7 @@ public class SceneLoader : MonoBehaviour {
 
 public Animator animate;
 [SerializeField]
-private float DelayBeforeLoading = 5.0f;
+private float DelayBeforeLoading = 60.0f;
 
  [SerializeField]
  private int loadLevel;
@@ -20,9 +20,6 @@ private float DelayBeforeLoading = 5.0f;
  
 
 
-void Start(){
-  
-}
   void Update(){
     updateAfterTime();
   }

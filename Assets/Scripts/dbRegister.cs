@@ -107,7 +107,6 @@ public class dbRegister : MonoBehaviour {
 			dbConn = null;
 		}
 	}
-	
 	// Update is called once per frame
 	void Update () {
 		
