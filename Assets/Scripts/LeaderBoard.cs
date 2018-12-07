@@ -8,9 +8,8 @@ public class LeaderBoard : MonoBehaviour {
     public Text[] HighScores;
 
 	int[] HighScoreValues;
-  
 
-    
+
 	// Use this for initialization
 	void Start () {
 	   HighScoreValues = new int[HighScores.Length];

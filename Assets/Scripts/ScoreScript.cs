@@ -5,15 +5,14 @@ using UnityEngine.UI;
 
 public class ScoreScript : MonoBehaviour {
 
-    
-   
+ 
     
     private GameObject GameControllerGame;
     public static int scoreVal = 0;
 	public Text score;
 	// Use this for initialization
 	void Start () {
-		score = GameControllerGame.GetComponent<Text> ();
+		score = GameObject.Find("Score").GetComponent<Text>();
 	}
 	
 
